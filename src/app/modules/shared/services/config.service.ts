@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import CONFIG from './config.json';
+import CONFIG from '../../../../config/config.json';
 
 export interface IConfigObject {
   auth_url: string;
