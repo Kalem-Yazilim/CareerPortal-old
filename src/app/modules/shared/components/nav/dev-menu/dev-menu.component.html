@@ -1,0 +1,8 @@
+<ul class="d-none d-lg-flex nav col-12 col-lg-auto my-2 my-md-0 text-small">
+    <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.link" class="nav-link menu-item"
+            [routerLinkActive]="'text-secondary'" [routerLinkActiveOptions]="{exact: (item.link == '')}">
+            {{item.title}}
+        </a>
+    </li>
+</ul>

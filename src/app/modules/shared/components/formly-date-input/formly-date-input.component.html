@@ -1,0 +1,21 @@
+<div class="col">
+  <label class="form-label" [for]="id">
+    {{ props.label }}
+    <ng-container *ngIf="props.required">*</ng-container>
+  </label>
+  <div class="input-group">
+    <input
+      class="form-control"
+      name="dp"
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+      ngbDatepicker
+      #d="ngbDatepicker"
+    />
+    <button
+      class="btn btn-outline-secondary bi bi-calendar3"
+      (click)="d.toggle()"
+      type="button"
+    ></button>
+  </div>
+</div>

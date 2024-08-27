@@ -1,0 +1,91 @@
+<div class="exam-wrapper row">
+  <div class="col-12 d-flex justify-content-between align-items-center">
+    <h2>Konu Testi</h2>
+    <div class="">
+      <p>Kalan Tekrar Hakkı: {{ availableCount }}</p>
+    </div>
+  </div>
+  <div class="container h-100" *ngIf="showQuestions">
+    <div class="row justify-content-between mx-2">
+      <app-exam-timer
+        class="col-auto"
+        [time]="examTime"
+        (timeEnd)="timeEnd()"
+      ></app-exam-timer>
+      <button class="col-auto btn btn-danger" (click)="finalizeExam()">
+        Testi Bitir
+      </button>
+    </div>
+    <div class="row my-2">
+      <div class="col d-flex justify-content-center">
+        <button
+          class="btn btn-primary d-lg-block"
+          (click)="previousQuestion()"
+          [disabled]="currentIndex === 0"
+        >
+          Önceki Soru
+        </button>
+        <div class="question-index">
+          <div
+            *ngFor="let index of indices"
+            (click)="goQuestion(index)"
+            class="questions"
+            [class.filled]="selectedAnswers[index] !== null"
+            [class.active]="currentIndex === index"
+          >
+            {{ index + 1 }}
+          </div>
+          <div>
+            <span class="questions-panel mx-2"
+              >{{ currentIndex + 1 }} / {{ indices.length }}</span
+            >
+          </div>
+        </div>
+        <button
+          class="btn btn-primary d-lg-block"
+          [disabled]="currentIndex === questions.length - 1"
+          (click)="nextQuestion()"
+        >
+          Sonraki Soru
+        </button>
+      </div>
+    </div>
+    <div class="">
+      <div *ngFor="let question of questions; index as i">
+        <div *ngIf="currentIndex === i" class="question-container">
+          <div class="col">
+            <p>{{ question.question }}</p>
+          </div>
+          <div class="col">
+            <div
+              *ngFor="let option of question.options; index as j"
+              class="question-option"
+            >
+              <input
+                type="radio"
+                name="{{ i }}"
+                id="{{ j }}"
+                [(ngModel)]="selectedAnswers[i]"
+                [value]="option"
+              />
+              <label for="{{ j }}">{{ option.OptionDesc }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 d-flex justify-content-center">
+    <button
+      class="next-button btn btn-success"
+      *ngIf="!showQuestions"
+      (click)="startExam()"
+      [disabled]="!questions || availableCount < 1 || isPassedExam"
+    >
+      {{ questions ? "Testi Başlat" : "Yükleniyor..." }}
+    </button>
+  </div>
+  <div class="col-12 d-flex justify-content-center" *ngIf="availableCount < 1">
+    <p class="text-danger">Tekrar hakkınız bulunmamaktadır.</p>
+  </div>
+</div>

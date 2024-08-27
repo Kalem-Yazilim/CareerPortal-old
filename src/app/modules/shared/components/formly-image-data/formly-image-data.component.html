@@ -1,0 +1,33 @@
+<div class="mb-3">
+  <div class="d-flex justify-content-between">
+    <label for="formFile" class="form-label"
+      >{{ props.label }}
+      <ng-container *ngIf="props.required">*</ng-container></label
+    >
+    <button
+      *ngIf="formControl.value"
+      class="btn btn-sm btn-danger"
+      type="button"
+      (click)="formControl.setValue('')"
+    >
+      X
+    </button>
+  </div>
+  <input
+    *ngIf="!formControl.value"
+    class="form-control"
+    type="file"
+    accept=".jpg,.png,.jpeg"
+    id="formFile"
+    [formControl]="formControl"
+    [formlyAttributes]="field"
+    appImageDataAccessor
+  />
+  <div class="p-1" *ngIf="formControl.value">
+    <img
+      class="img-fluid border rounded-1"
+      [src]="'data:image/txt;base64,' + formControl.value"
+      alt="Görsel"
+    />
+  </div>
+</div>

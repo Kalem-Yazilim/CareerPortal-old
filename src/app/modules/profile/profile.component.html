@@ -1,0 +1,43 @@
+<div class="container-fluid container-xl">
+  <div class="row d-flex">
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="card">
+        <div class="card-body row justify-content-center">
+          <div class="col-6 col-sm-12">
+            <div class="ratio ratio-1x1">
+              <img class="rounded-circle" [src]="profilImage" alt="PP" />
+            </div>
+          </div>
+          <h5 class="card-title pt-2 text-center">Kalem Yazılım</h5>
+        </div>
+        <ul class="mt-auto list-group list-group-flush">
+          <ng-template ngFor let-tab [ngForOf]="tabs" let-i="index">
+            <li
+              *ngIf="tab.component"
+              class="list-group-item"
+              style="cursor: pointer"
+              [ngClass]="{ active: i == activeTabIndex }"
+              (click)="loadTab(tab.component, i)"
+            >
+              {{ tab.title }}
+            </li>
+            <li
+              *ngIf="tab.url"
+              class="list-group-item"
+              style="cursor: pointer"
+              [ngClass]="{ active: i == activeTabIndex }"
+              [routerLink]="tab.url"
+            >
+              {{ tab.title }}
+            </li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-9">
+      <div class="card w-100 h-100">
+        <ng-container [ngComponentOutlet]="activeComponent"> </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

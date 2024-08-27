@@ -1,0 +1,23 @@
+<ng-template #newQuality>
+  <app-new-quality
+    [oid]="oid"
+    (isEntityAdded)="refresh($event)"
+    [updateModel]="updateEntity"
+  ></app-new-quality>
+</ng-template>
+
+<app-grid
+  #grid
+  [requestConfig]="requestConfig"
+  (entity)="openModal(newQuality, $event)"
+></app-grid>
+
+<div class="d-flex justify-content-end">
+  <button
+    type="button"
+    class="btn btn-primary me-3"
+    (click)="openModal(newQuality)"
+  >
+    Ekle
+  </button>
+</div>

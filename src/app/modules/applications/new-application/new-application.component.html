@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="card p-4 w-100 h-100">
+        <div class="row">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <label for="first-name" class="form-label">İsim: </label>
+                        <input id="first-name" class="form-control" type="text" formControlName="firstName" required>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="last-name" class="form-label">Soyisim: </label>
+                        <input id="last-name" type="text" class="form-control" formControlName="lastName">
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <h4>Kişisel Bilgiler</h4>
+
+                    <label for="birthDate" class="form-label">Doğum Tarihi: </label>
+                    <input id="birthDate" type="date" class="form-control" formControlName="birthDate">
+                </div>
+
+                <div class="pt-4" formGroupName="contact">
+                    <h4>İletişim Bilgileri</h4>
+
+                    <label for="email" class="form-label">E-Posta Adresi: </label>
+                    <input id="email" type="text" class="form-control" formControlName="email">
+
+                    <label for="telephone" class="form-label">Telefon Numarası: </label>
+                    <input id="telephone" type="text" class="form-control" formControlName="telephone">
+                </div>
+
+                <div class="pt-4" formGroupName="address">
+                    <h4>Adres</h4>
+
+                    <label for="street" class="form-label">Sokak: </label>
+                    <input id="street" type="text" class="form-control" formControlName="street">
+
+                    <label for="city" class="form-label">İl: </label>
+                    <input id="city" type="text" class="form-control" formControlName="city">
+
+                    <label for="state" class="form-label">İlçe: </label>
+                    <input id="state" type="text" class="form-control" formControlName="state">
+
+                    <label for="zip" class="form-label">Posta Kodu: </label>
+                    <input id="zip" type="text" class="form-control" formControlName="zip">
+                </div>
+
+                <button class="my-3 btn btn-lg btn-primary" type="submit" [disabled]="!form.valid">Başvur</button>
+            </form>
+        </div>
+    </div>
+</div>

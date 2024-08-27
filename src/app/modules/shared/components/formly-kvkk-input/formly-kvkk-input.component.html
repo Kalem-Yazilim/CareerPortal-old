@@ -1,0 +1,101 @@
+<input type="checkbox" [formControl]="formControl" [formlyAttributes]="field" class="form-check-input" />
+<div style="position: relative; top: -25px; left: 30px;">
+    <p>
+        <b (click)="showModal(content)" style="cursor: pointer;">
+            KVKK Açık Rıza Onay Metni</b>’ni okudum, onayladım.
+    </p>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Açık Rıza Beyan Metni</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body p-5">
+        <section>
+            <p>
+                6698 sayılı “Kişisel Verilerin Korunması Kanunu” ve “Kişisel Sağlık Verilerinin İşlenmesi ve
+                Mahremiyetinin Sağlanması Hakkında Yönetmelik” gereğince, tarafıma şirket bünyesinde ilgili yasal
+                düzenlemeler ve bu çerçevede sahip olduğum haklar açısından eğitim verilmiş olup, eğitim sonrası
+                tarafıma teslim edilen aydınlatma metnini okudum, inceledim. İlgili Yasalar kapsamında <b>“CASPER
+                    A.Ş”</b> ne tarafımca sözlü/ yazılı ve/veya elektronik ortamda verilen, kimliğimi belirleyen veya
+                belirlemeye yarayanlar da dahil olmak üzere gerekli kişisel verilerimin, özel nitelikli kişisel
+                verilerimin, sağlık verilerimin <b>“CASPER A.Ş”</b> tarafından işlenmesine, yapılan iş gereğince
+                hizmetin verilebilmesi ve bu hizmetlerin planlaması amacıyla, ilgili mevzuatlar kapsamında paylaşımın
+                gerekli olduğu diğer kişi ve kuruluşlar ile paylaşılmasına; kişisel veriler, özel nitelikli kişisel
+                veriler, sağlık verilerimin 6698 sayılı “Kişisel Verilerin Korunması Kanununda” ve “Kişisel Sağlık
+                Verilerinin İşlenmesi ve Mahremiyetinin Sağlanması Hakkında Yönetmelik” te tanımlanan kapsamda aşağıda
+                detayları verilen kişisel ve özel nitelikli kişisel verilerin işlenmesine muvafakat ediyorum.
+            </p>
+            <ul>
+                <li>Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen
+                    otomatik şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde
+                    işlenen, <b>kişinin kimliğine dair bilgilerin bulunduğu veriler;</b>
+                </li>
+            </ul>
+            <p>
+                Ad- soyad, T.C. Kimlik numarası, uyruk bilgisi, anne adı – baba adı, doğum yeri, doğum tarihi, cinsiyet
+                gibi bilgileri içeren ehliyet, nüfus cüzdanı ve pasaport gibi belgeler, Adli Sicil Kaydı, Diploma
+                Örneği, Gerekli durumlarda Engelli belgesi, Askerlik Durum belgesi, Sağlık raporu, kan Grubu kartı,
+                Biometrik veri, evli olduğu takdirde evlilik belgesi ile vergi numarası, SGK numarası, kredi kart
+                bilgileri, banka hesap bilgileri, imza bilgileri, taşıt plakası, eş ve çocukların adı, soyadı, TC kimlik
+                numarası, acil durumlarda ulaşılması talep edilen yakına ait ad, soyad, telefon numarası vb. bilgiler,
+            </p>
+
+            <ul>
+                <li>Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen
+                    otomatik şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde işlenen;
+                    <b>İletişim bilgilerinin bulunduğu veriler;</b> Telefon numarası, adres, e-mail adresi, faks
+                    numarası, IPadresi gibi bilgiler,
+                </li>
+                <li>
+                    Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen
+                    otomatik
+                    şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde işlenen pazarlama
+                    verileri içeren alışveriş geçmişi bilgileri, Anket, Çerez kayıtları, Kampanya çalışmasıyla elde
+                    edilen
+                    bilgiler v.b.
+                </li>
+                <li>
+                    Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen
+                    otomatik
+                    şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde işlenen; Güvenlik ve
+                    iş
+                    akışı amacı ile <b>Kayıt tutma sureti ile edinilen veriler;</b>
+                </li>
+            </ul>
+
+            <p>
+
+                Fiziksel mekâna girişte, fiziksel mekânın içerisinde kalış sırasında alınan kartlı veya kartsız geçiş
+                sistemi kayıtları ve belgelere ilişkin kişisel veriler; kamera kayıtları ve güvenlik noktasında alınan
+                kayıtlar, şirket aracı kullanımı halinde araç takip sistemi kayıtları, şirket içi bilgisayar kullanımına
+                bağlı erişim logları,
+            </p>
+            <ul>
+                <li>
+                    Kimliği belirli veya belirlenebilir bir gerçek kişiye ait olduğu açık olan; kısmen veya tamamen
+                    otomatik şekilde veya veri kayıt sisteminin bir parçası olarak otomatik olmayan şekilde işlenen;
+                    <b>“CASPER A.Ş”</b> ye yöneltilmiş olan her türlü talep veya şikâyetin alınması ve
+                    değerlendirilmesine ilişkin kişisel veriler,
+                </li>
+            </ul>
+
+            <p>
+                <b>“CASPER A.Ş”</b> tarafından Kişisel Verilerin Korunması ve İşlenmesi Hakkında ayrıca web sitesinde
+                bulunan, basılı & elektronik ortamda sunulan veya sms (kısa mesaj) ile iletişim numarası olarak beyan
+                ettiğim gsm numarasına şahsım için gönderilen Aydınlatma Metnini ve haklarımı okudum ve bu kapsamda
+                yukarıda da izah edildiği şekilde kişisel verilerimin <b>“kaydedilmesine, depolanmasına, muhafaza
+                    edilmesine, yeniden düzenlenmesine, kanunen bu kişisel verileri talep etmeye yetkili olan kurumlar
+                    ile paylaşılmasına ve KVKK'nın öngördüğü şartlarda, yurtiçi veya yurtdışı üçüncü kişilere
+                    aktarılmasına, devredilmesine, sınıflandırılmasına ve KVKK'da sayılan sair şekillerde
+                    işlenebilmesine özgür iradem ile KABUL EDİYORUM.</b>
+            </p>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">
+            Kapat
+        </button>
+    </div>
+</ng-template>

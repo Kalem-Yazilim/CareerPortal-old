@@ -1,0 +1,49 @@
+<div class="container-fluid container-xl">
+  <div class="row row-cols-2 row-cols-md-3">
+    <div *ngFor="let resume of personnelCvs" class="col">
+      <div class="card w-100">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            {{ resume.NameOfPersonnelCV }}
+            <!-- <i
+              *ngIf="resume."
+              class="bi bi-patch-check-fill"
+              style="color: var(--bs-success)"
+            ></i> -->
+          </h5>
+          <p class="card-text">
+            Dosya Sayısı: <b>{{ resume.FileSystemStoreObjectBases }}</b>
+          </p>
+          <p class="card-text">
+            Oluşturma Tarihi:
+            <b>
+              {{ resume.UpdateDate | date : "dd.MM.yyyy hh:mm" }}
+            </b>
+          </p>
+          <p class="card-text">
+            Düzenleme Tarihi:
+            <b>
+              {{ resume.UpdateDate | date : "dd.MM.yyyy hh:mm" }}
+            </b>
+          </p>
+          <div class="row">
+            <!-- <a routerLink="preview/{{ resume.Oid }}" class="col m-2 btn btn-secondary">İncele</a> -->
+            <a routerLink="update/{{ resume.Oid }}" class="col m-2 btn btn-secondary">Düzenle</a>
+            <a (click)="deleteResume(resume.Oid)" class="col-2 m-2 btn btn-danger">X</a>
+          </div>
+          <!-- <div *ngIf="!resume.preferred" class="row">
+            <a class="col m-2 btn btn-secondary">Varsayılan Yap</a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card w-100 h-100 text-center add-new" [routerLink]="'new'">
+        <div class="card-body row">
+          <i class="bi bi-plus-square" style="font-size: 80px"></i>
+          <h5 class="card-title">Özgeçmiş Oluştur</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

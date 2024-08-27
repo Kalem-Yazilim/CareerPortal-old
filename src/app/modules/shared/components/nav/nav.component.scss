@@ -1,0 +1,60 @@
+.overlay-nav {
+  display: flex;
+  background: linear-gradient(180deg, #000000, #3a3a3a);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+}
+
+.nav-bg {
+  background: linear-gradient(
+    252.44deg,
+    rgb(141, 245, 245) 0%,
+    rgb(81, 222, 238) 21.85%,
+    rgb(26, 124, 135) 61.95%,
+    rgb(7, 101, 129) 80%
+  );
+}
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+.profil-image-container {
+  display: flex;
+  align-items: center;
+}
+
+.profil-image {
+  margin-right: 10px; /* Resim ile metin arasındaki boşluğu ayarlayın */
+  width: 50px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.profil-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.userNameAndSurname {
+  font-style: italic;
+  color: beige;
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.dropdown-menu {
+  z-index: 1060;
+}
+
+.fs-12 {
+  font-size: 12px !important;
+}
+
+.h-10p {
+  margin: 0 !important;
+}

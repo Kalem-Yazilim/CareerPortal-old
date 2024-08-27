@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="row">
+    <div class="card py-4">
+      <div class="card-body">
+        <ul
+          ngbNav
+          #nav="ngbNav"
+          [(activeId)]="active"
+          [destroyOnHide]="false"
+          class="nav-tabs sticky-md-top"
+        >
+          <li [ngbNavItem]="1" [destroyOnHide]="true">
+            <a ngbNavLink>Genel</a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv #personlCV [oid]="oid"></app-personnel-cv>
+            </ng-template>
+          </li>
+          <li
+            [ngbNavItem]="2"
+            [destroyOnHide]="true"
+            [disabled]="mode == 'post'"
+          >
+            <a disabled ngbNavLink
+              >Eğitim Bilgisi
+              <i
+                *ngIf="!educationListCount && mode !== 'post'"
+                class="bi bi-exclamation-circle text-danger"
+              ></i
+            ></a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv-education
+                [oid]="oid"
+                (addedEntity)="changeDangerIcon('educationListCount')"
+              ></app-personnel-cv-education>
+            </ng-template>
+          </li>
+          <li
+            [ngbNavItem]="3"
+            [destroyOnHide]="true"
+            [disabled]="mode == 'post'"
+          >
+            <a ngbNavLink
+              >Yabancı Dil Bilgisi
+              <i
+                *ngIf="!languageListCount && mode !== 'post'"
+                class="bi bi-exclamation-circle text-danger"
+              ></i>
+            </a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv-language
+                [oid]="oid"
+                (addedEntity)="changeDangerIcon('languageListCount')"
+              ></app-personnel-cv-language>
+            </ng-template>
+          </li>
+          <li
+            [ngbNavItem]="4"
+            [destroyOnHide]="true"
+            [disabled]="mode == 'post'"
+          >
+            <a ngbNavLink
+              >İş Tecrübeleri
+              <i
+                *ngIf="!lastJobListCount && mode !== 'post'"
+                class="bi bi-exclamation-circle text-danger"
+              ></i
+            ></a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv-last-job
+                [oid]="oid"
+                (addedEntity)="changeDangerIcon('lastJobListCount')"
+              ></app-personnel-cv-last-job>
+            </ng-template>
+          </li>
+          <li
+            [ngbNavItem]="5"
+            [destroyOnHide]="true"
+            [disabled]="mode == 'post'"
+          >
+            <a ngbNavLink>Referanslar</a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv-last-job-reference
+                [oid]="oid"
+              ></app-personnel-cv-last-job-reference>
+            </ng-template>
+          </li>
+          <li
+            [ngbNavItem]="6"
+            [destroyOnHide]="true"
+            [disabled]="mode == 'post'"
+          >
+            <a ngbNavLink
+              >Nitelikler
+              <i
+                *ngIf="!jobQualityListCount && mode !== 'post'"
+                class="bi bi-exclamation-circle text-danger"
+              ></i
+            ></a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv-job-quality
+                [oid]="oid"
+                (addedEntity)="changeDangerIcon('jobQualityListCount')"
+              ></app-personnel-cv-job-quality>
+            </ng-template>
+          </li>
+          <li
+            [ngbNavItem]="8"
+            [destroyOnHide]="true"
+            [disabled]="mode == 'post'"
+          >
+            <a ngbNavLink>Dosya Ekle</a>
+            <ng-template ngbNavContent>
+              <app-personnel-cv-file [oid]="oid"></app-personnel-cv-file>
+            </ng-template>
+          </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="btnContainer">
+    <div class="btnCol">
+      <button
+        class="btnGrey customButton"
+        [disabled]="active === 1"
+        [class.unClick]="active === 1"
+        (click)="nav.select(active - 1)"
+      >
+        Geri Dön
+      </button>
+      <button
+        *ngIf="mode == 'post' || true; else elseBlock"
+        class="btnOrenge customButton"
+        (click)="personlCV.onSubmit()"
+        [disabled]="personlCV && personlCV.form && personlCV.form.invalid"
+        [class.unClick]="personlCV && personlCV.form && personlCV.form.invalid"
+      >
+        Kaydet
+      </button>
+      <ng-template #elseBlock>
+        <button
+          class="btnOrenge customButton"
+          [disabled]="active >= (nav && nav.items ? nav.items.length : 0)"
+          [class.unClick]="active >= (nav && nav.items ? nav.items.length : 0)"
+          (click)="nav.select(active + 1)"
+        >
+          Sonraki Sayfa
+        </button>
+      </ng-template>
+      <button
+        [disabled]="mode == 'post'"
+        [class.unClick]="mode == 'post'"
+        class="btnGreen customButton"
+        [routerLink]="'/resumes'"
+      >
+        Özgeçmişi Tamamla
+      </button>
+    </div>
+  </div>
+</div>

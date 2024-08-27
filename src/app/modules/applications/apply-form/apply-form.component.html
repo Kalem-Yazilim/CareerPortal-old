@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-3 col-6 my-2">
+      <button
+        class="btn btn-outline-primary btn-sm w-25 fw-semibold fs-5"
+        routerLink="/JobAnnouncements"
+      >
+        <i class="bi bi-arrow-up-left-square-fill fs-5"></i> İlanlara Dön
+      </button>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="jobAnnouncement">
+    <div class="offset-3 col-6">
+      <div class="card p-4">
+        <h2>Başvurulan İlan : {{ jobAnnouncement.JobAnnouncementTitle }}</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <formly-form
+            [model]="model"
+            [fields]="fields"
+            [options]="options"
+            [form]="form"
+          ></formly-form>
+          <div class="col text-end">
+            <button
+              [disabled]="form.invalid"
+              class="btn btn-primary btn-lg w-50"
+            >
+              Başvur
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

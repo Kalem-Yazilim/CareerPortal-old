@@ -1,0 +1,50 @@
+<app-nav style="position: absolute; inset: 0"></app-nav>
+<div class="container container-md container-xl">
+  <div class="card login">
+    <div class="card-body">
+      <div class="card-body">
+        <div class="card-title text-center mb-4">
+          <img
+            *ngIf="logoColoredUrl"
+            [src]="logoColoredUrl"
+            style="height: 32px; transform: translate(0px, 6px)"
+            alt="Casper Logo"
+          />
+        </div>
+
+        <div class="d-flex justify-content-center" *ngIf="progcess">
+          <div class="spinner-grow text-info my-5" role="status">
+            <span class="visually-hidden">Yükleniyor...</span>
+          </div>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!progcess">
+          <formly-form
+            [model]="login_model"
+            [fields]="fields"
+            [options]="options"
+            [form]="form"
+          ></formly-form>
+          <div class="d-grid gap-2">
+            <button
+              type="submit"
+              class="submit-button btn btn-primary btn-lg btn-block"
+              [class.disabled]="progcess"
+              [disabled]="!form.valid && !progcess"
+            >
+              Giriş Yap
+            </button>
+          </div>
+          <div class="links-section">
+            <div class="text-end mt-4">
+              <a routerLink="/auth/ResetPassword">Şifremi unuttum!</a>
+            </div>
+            <div class="text-end mt-4">
+              <a routerLink="/auth/register">Üye Ol</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

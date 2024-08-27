@@ -1,0 +1,54 @@
+<div class="container-fluid container-xl">
+  <div class="row">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" *ngIf="
+        personnelJobApplications && personnelJobApplications.length > 0;
+        else noContent
+      ">
+      <div *ngFor="let app of personnelJobApplications" class="col my-2">
+        <div class="card w-100">
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              {{ app.PersonnelJobAnnouncement.JobAnnouncementTitle }}
+              <!-- <i
+                *ngIf="resume."
+                class="bi bi-patch-check-fill"
+                style="color: var(--bs-success)"
+              ></i> -->
+            </h5>
+
+            <p class="card-text">
+              Kullanılan Özgeçmiş:
+              <b>
+                {{ app.PersonnelCv.NameOfPersonnelCV }}
+              </b>
+            </p>
+            <p class="card-text">
+              Başvuru Tarihi:
+              <b>
+                {{ app.ApplicationDate | date : "dd MM yyyy" }}
+              </b>
+            </p>
+            <p class="card-text">
+              Durum:
+              <b>
+                {{ app.JobApplicationType | translate }}
+              </b>
+            </p>
+            <div class="row">
+              <a (click)="removeApplication(app.Oid)" class="col m-2 btn btn-danger">Başvuruyu Geri Al</a>
+              <!-- <a routerLink="review/{{ app.Oid }}" class="col m-2 btn btn-secondary">İncele</a> -->
+            </div>
+            <!-- <div *ngIf="!resume.preferred" class="row">
+              <a class="col m-2 btn btn-secondary">Varsayılan Yap</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noContent>
+      <div class="col">
+        <h5 class="card-title">Henüz bir ilana başvuru yapmadınız.</h5>
+      </div>
+    </ng-template>
+  </div>
+</div>

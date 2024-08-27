@@ -1,0 +1,23 @@
+<ng-template #newLanguage>
+  <app-new-language
+    [oid]="oid"
+    (isEntityAdded)="refresh($event)"
+    [updateModel]="updateEntity"
+  ></app-new-language>
+</ng-template>
+
+<app-grid
+  #grid
+  [requestConfig]="requestConfig"
+  (entity)="openModal(newLanguage, $event)"
+></app-grid>
+
+<div class="d-flex justify-content-end">
+  <button
+    type="button"
+    class="btn btn-primary me-3"
+    (click)="openModal(newLanguage)"
+  >
+    Ekle
+  </button>
+</div>

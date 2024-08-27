@@ -1,0 +1,8 @@
+:host {
+  height: 800px;
+}
+
+::ng-deep pdf-viewer .ng2-pdf-viewer-container {
+  width: calc(100% - 16px) !important;
+  height: calc(100% - 16px) !important;
+}

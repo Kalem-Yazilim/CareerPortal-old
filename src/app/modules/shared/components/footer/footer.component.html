@@ -1,0 +1,25 @@
+<footer class="container-fluid container-xl d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+  <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start align-items-center">
+      <span class="mb-3 mb-md-0 text-muted">{{ configs?.footer_copyright_text }}</span>
+  </div>
+
+  <span class="mb-3 mb-md-0 text-muted" style="font-size: 12px;">Version: {{version}}</span>
+
+  <ul class="nav col-12 col-md-4 justify-content-center justify-content-md-end list-unstyled d-flex">
+      <li class="ms-3" *ngIf="configs?.twitter_url">
+          <a href="" class="text-muted" *ngIf="configs.twitter_url" target="_blank">
+              <i class="bi bi-twitter" style="font-size: 24px;"></i>
+          </a>
+      </li>
+      <li class="ms-3" *ngIf="configs?.instagram_url">
+          <a href="" class="text-muted" [href]="configs.instagram_url" target="_blank">
+              <i class="bi bi-instagram" style="font-size: 24px;"></i>
+          </a>
+      </li>
+      <li class="ms-3"  *ngIf="configs?.facebook_url">
+          <a href="" class="text-muted" [href]="configs.facebook_url" target="_blank">
+              <i class="bi bi-facebook" style="font-size: 24px;"></i>
+          </a>
+      </li>
+  </ul>
+</footer>

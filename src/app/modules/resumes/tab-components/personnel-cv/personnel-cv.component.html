@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <!-- <button class="btn btn-danger" (click)="logModel()" type="button">Model</button> -->
+  <formly-form
+    [model]="model"
+    [fields]="fields"
+    [options]="options"
+    [form]="form"
+  ></formly-form>
+</form>

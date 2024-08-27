@@ -1,0 +1,55 @@
+<div class="container-fluid container-xl">
+  <div class="row">
+    <div class="col">
+      <h1 class="h4">
+        İlanlar
+        <span class="fs-6 text badge bg-info">{{ count }}</span>
+      </h1>
+    </div>
+  </div>
+  <div class="row row-cols-2 row-cols-md-3">
+    <div *ngFor="let jobAnnouncement of jobAnnouncements" class="col mb-4">
+      <div class="card w-100">
+        <div class="card-header">
+          <h2 class="h5 card-title">
+            {{ jobAnnouncement.JobAnnouncementTitle }}
+          </h2>
+        </div>
+        <div class="card-body  overflow-hidden">
+          <div class="container">
+            <span class="row mb-1 fs-8 fw-semibold">
+              İlan Tarihi :
+              {{ jobAnnouncement.AnnouncementStartDate | date : "dd.MM.yyyy" }}
+            </span>
+            <span class="row mb-1 fs-8 fw-semibold">
+              Son Başvuru :
+              {{ jobAnnouncement.AnnouncementEndDate | date : "dd.MM.yyyy" }}
+            </span>
+            <span class="row mb-1 fs-8 fw-semibold">
+              Görevlendirilecek Yer :
+              {{ jobAnnouncement.JobLocation }}
+            </span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col">
+              <a
+                class="btn btn-outline-info w-100 m-1 fs-6"
+                routerLink="/JobAnnouncements/{{ jobAnnouncement.Oid }}"
+                >İncele</a
+              >
+            </div>
+            <div class="col">
+              <a
+                class="btn btn-outline-primary w-100 m-1 fs-6"
+                routerLink="/applications/apply/{{ jobAnnouncement.Oid }}"
+                >Başvur</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

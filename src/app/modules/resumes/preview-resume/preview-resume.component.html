@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row" *ngIf="personnelCv">
+    <h1>
+      {{ personnelCv.NameOfPersonnelCV }}
+    </h1>
+  </div>
+  <div class="row row-cols-3">
+    <div class="col" *ngFor="let feild of feilds">
+      {{ feild[0] }} : <b> {{ feild[1] }}</b>
+    </div>
+  </div>
+</div>

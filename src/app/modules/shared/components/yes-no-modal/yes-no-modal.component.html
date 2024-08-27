@@ -1,0 +1,9 @@
+<div class="container-fluid p-4">
+    <div class="row py-4">
+        <h4>{{question}}</h4>
+    </div>
+    <div class="row justify-content-around">
+        <button class="btn btn-danger col-5" (click)="answer(false)">Hayır</button>
+        <button class="btn btn-success col-5" (click)="answer(true)">Evet</button>
+    </div>
+</div>

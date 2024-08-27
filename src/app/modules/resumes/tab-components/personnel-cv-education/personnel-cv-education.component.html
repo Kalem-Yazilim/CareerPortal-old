@@ -1,0 +1,23 @@
+<ng-template #newEducation>
+  <app-new-education
+    [oid]="oid"
+    (isEntityAdded)="refresh($event)"
+    [updateModel]="updateEntity"
+  ></app-new-education>
+</ng-template>
+
+<app-grid
+  #grid
+  [requestConfig]="requestConfig"
+  (entity)="openModal(newEducation, $event)"
+></app-grid>
+
+<div class="d-flex justify-content-end">
+  <button
+    type="button"
+    class="btn btn-primary me-3"
+    (click)="openModal(newEducation)"
+  >
+    Ekle
+  </button>
+</div>

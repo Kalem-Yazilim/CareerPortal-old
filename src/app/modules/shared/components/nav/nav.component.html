@@ -1,0 +1,109 @@
+<header class="pb-2 pb-xl-4">
+  <div class="px-3 py-2 nav-bg">
+    <div class="container-fluid container-xl">
+      <div class="d-flex align-items-center justify-content-between">
+        <button class="btn" [routerLink]="''">
+          <img
+            *ngIf="logoWhiteUrl"
+            [src]="logoWhiteUrl"
+            style="height: 32px; transform: translate(0px, 6px)"
+            alt="Logo"
+          />
+        </button>
+        <ul
+          class="d-none d-lg-flex nav col-12 col-lg-auto my-2 my-md-0 text-small"
+          app-menu
+          *ngIf="loginStatus$ | async"
+        ></ul>
+        <!-- <app-dev-menu *ngIf="!prod"></app-dev-menu> -->
+        <button class="d-flex d-lg-none btn" (click)="fullscreenMenu()">
+          <i class="bi bi-list text-white" style="font-size: 30px"></i>
+        </button>
+        <div ngbDropdown class="d-none d-lg-flex" *ngIf="loginStatus$ | async">
+          <div ngbDropdownToggle class="profil-image-container">
+            <p
+              class="pl-3 userNameAndSurname"
+              style="min-width: 180px; text-align: end"
+            >
+              <span> {{ fullName }}</span>
+            </p>
+            <img
+              class="rounded-circle profil-image"
+              [src]="profilImage"
+              alt="Kullanıcı"
+              sizes="50"
+            />
+          </div>
+          <div ngbDropdownMenu>
+            <p class="text-center text-black fw-bolder lh-lg mx-3 h-10p">
+              {{ fullName }}
+            </p>
+            <p class="text-center text-black lh-lg mx-3 fs-12">
+              {{ "(" + userService.userName + ")" }}
+            </p>
+            <button ngbDropdownItem routerLink="/profile">Profil</button>
+            <button ngbDropdownItem routerLink="/auth/ChangePassword">
+              Şifremi Değiştir
+            </button>
+            <hr />
+            <button ngbDropdownItem (click)="logout()">Çıkış</button>
+          </div>
+        </div>
+
+        <button
+          [routerLink]="this.url !== 'auth/login' ? '/auth/login' : ''"
+          *ngIf="!(loginStatus$ | async)"
+          class="d-none d-lg-flex btn btn-light"
+        >
+          {{ this.url !== "auth/login" ? "Giriş Yap" : "Ana Sayfa" }}
+        </button>
+      </div>
+      <div class="overlay-nav" *ngIf="fullscreenMenuOpen" [@inOutAnimation]>
+        <div class="p-3 w-100 h-100">
+          <div class="row">
+            <div class="d-flex">
+              <button class="btn" [routerLink]="''" skipLocationChange>
+                <img
+                  *ngIf="logoWhiteUrl"
+                  [src]="logoWhiteUrl"
+                  style="height: 32px; transform: translate(0px, 6px)"
+                  alt="Logo"
+                />
+              </button>
+              <button
+                class="ms-auto d-flex d-lg-none btn"
+                (click)="fullscreenMenu()"
+              >
+                <i class="bi bi-x" style="font-size: 30px; color: white"></i>
+              </button>
+            </div>
+          </div>
+          <div class="row mt-4 h-100" (click)="fullscreenMenu()">
+            <div class="text-center">
+              <ul
+                class="nav my-2 my-md-0 text-small d-flex align-items-center"
+                style="flex-direction: column"
+                app-menu
+                *ngIf="loginStatus$ | async"
+              ></ul>
+              <button
+                *ngIf="loginStatus$ | async"
+                (click)="logout()"
+                class="btn btn-secondary"
+              >
+                Çıkış
+              </button>
+              <button
+                [routerLink]="'auth/login'"
+                *ngIf="!(loginStatus$ | async)"
+                class="btn btn-secondary w-100"
+              >
+                Giriş Yap
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

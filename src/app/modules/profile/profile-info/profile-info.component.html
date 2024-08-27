@@ -1,0 +1,19 @@
+<div class="p-3">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <formly-form
+      [model]="model"
+      [fields]="fields"
+      [options]="options"
+      [form]="form"
+    ></formly-form>
+    <div class="d-grid gap-2 my-3">
+      <button
+        type="submit"
+        class="submit-button btn btn-primary btn-lg btn-block"
+        [disabled]="!form.valid"
+      >
+        Kaydet
+      </button>
+    </div>
+  </form>
+</div>

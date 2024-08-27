@@ -1,0 +1,25 @@
+/*Overridings should be before import statements*/
+$light: #f5f5f5;
+$primary: #094092;
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import 'src/assets/css/toastr';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    background-color: var(--bs-light);
+}
+
+main {
+   /*  text-align: center; */
+    position: relative;
+}
+
+.white-space-wrap {
+  white-space: pre-wrap;
+}

@@ -1,0 +1,46 @@
+<div class="container-fluid container-xl">
+  <div class="row table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" *ngFor="let column of requestConfig.columns">
+            {{ column.header }}
+          </th>
+          <th>-</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td *ngFor="let colIndex of requestConfig.columns; let i = index">
+            <span
+              *ngIf="requestConfig.columns[i]?.type !=='date'  && requestConfig.columns[i]?.translate !== true && !requestConfig.columns[i]?.link">
+              {{ getPropertyValue(item, requestConfig.columns[i].binding, requestConfig.columns[i].type =='salary') }}
+            </span>
+            <span
+              *ngIf="requestConfig.columns[i]?.type !=='date' && requestConfig.columns[i]?.translate !== true && requestConfig.columns[i]?.link">
+              <a (click)="emitLink(getPropertyValue(item, 'Oid'))"
+                style="color: var(--bs-link-color); text-decoration: underline; cursor: pointer;"> {{
+                getPropertyValue(item, requestConfig.columns[i].binding) }} </a>
+
+            </span>
+            <span *ngIf="requestConfig.columns[i]?.type !=='date' && requestConfig.columns[i]?.translate === true">
+              {{ getPropertyValue(item, requestConfig.columns[i].binding) | translate }}
+            </span>
+            <span *ngIf="requestConfig.columns[i]?.type ==='date'">
+              {{ getPropertyValue(item, requestConfig.columns[i].binding) | date: 'dd/MM/yyyy'}}
+            </span>
+          </td>
+          <td>
+            <button *ngIf="updatable" class="btn btn-info text-light mx-1" (click)="updateEntity(item)">
+              <i class="bi-pencil"></i>
+            </button>
+            <button class="btn btn-danger mx-1" (click)="delete(item.Oid)">
+              <i class="bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+<div class="container-fluid">
+  <div class="" *ngIf="course">
+    <div class="row my-3" style="background-color: #f5f5f5">
+      <div class="row align-items-center">
+        <div class="col-2">
+          <button
+            class="btn btn-secondary btn-sm"
+            [routerLink]="'/training/' + categoryId"
+          >
+            <i class="bi bi-arrow-left"></i>
+            <span class="d-none d-lg-inline">Kurslara Dön</span>
+          </button>
+        </div>
+        <div class="col-8">
+          <h3 class="text-center mb-0">
+            {{ course.EducationList.EducationDefinition.Name }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-9">
+      <div class="card">
+        <div class="card-body row">
+          <ng-container contentHost></ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-3 h-100">
+      <!-- <div class="col-12">
+                <div class="row p-2">
+                    <button class="col-6 btn btn-sm btn-primary border">
+                        Önceki
+                    </button>
+                    <button class="col-6 btn btn-primary border">
+                        Sonraki
+                    </button>
+                </div>
+            </div> -->
+
+      <ul class="list-group content-list">
+        <li
+          class="list-group-item"
+          [ngClass]="{ active: activeContentIndex == -1 }"
+          (click)="activeContentIndex = -1; loadContent(0)"
+        >
+          Genel Bakış
+        </li>
+        <li
+          *ngIf="hasDocument"
+          class="list-group-item"
+          [ngClass]="{ active: activeContentIndex == -1611 }"
+          (click)="activeContentIndex = -1611; loadContent(5)"
+        >
+          Doküman
+          <span
+            *ngIf="document.IsCompleted"
+            class="ms-2 badge bg-success rounded-pill"
+            >Tamamlandı!</span
+          >
+          <span
+            *ngIf="!document.IsCompleted"
+            class="ms-2 badge bg-danger rounded-pill"
+            >Tamamlanmadı!</span
+          >
+        </li>
+        <ng-container *ngFor="let content of contents; let i = index">
+          <li
+            *ngIf="content.type == 'video'"
+            class="list-group-item"
+            [ngClass]="{ active: activeContentIndex == i }"
+            (click)="activeContentIndex = i; loadContent(2)"
+          >
+            Video Anlatım
+            <span
+              *ngIf="content.isCompleted"
+              class="ms-2 badge bg-success rounded-pill"
+              >Tamamlandı!</span
+            >
+            <span
+              *ngIf="!content.isCompleted"
+              class="ms-2 badge bg-danger rounded-pill"
+              >Tamamlanmadı!</span
+            >
+          </li>
+
+          <li
+            *ngIf="content.type == 'slideshow'"
+            class="list-group-item"
+            [ngClass]="{ active: activeContentIndex == 100 }"
+            (click)="activeContentIndex = 100; loadContent(activeContentIndex)"
+          >
+            Sunum
+          </li>
+          <li
+            *ngIf="content.type == 'summary'"
+            class="list-group-item"
+            [ngClass]="{ active: activeContentIndex == 101 }"
+            (click)="activeContentIndex = 101; loadContent(activeContentIndex)"
+          >
+            Konu Anlatım
+          </li>
+        </ng-container>
+        <li
+          *ngIf="hasExam"
+          class="list-group-item"
+          [class.disabled]="!examAvailable"
+          [ngClass]="{ active: activeContentIndex == contents.length }"
+          (click)="activeContentIndex = contents.length; loadContent(3)"
+        >
+          Konu Testi
+          <span
+            *ngIf="course.IsSuccessfull"
+            class="ms-2 badge bg-success rounded-pill"
+            >Tamamlandı!
+          </span>
+          <span
+            *ngIf="course.IsSuccessfull && course.Score"
+            class="ms-2 badge bg-info rounded-pill"
+            >{{ course.Score }}
+          </span>
+          <span
+            *ngIf="!course.IsSuccessfull"
+            class="ms-2 badge bg-danger rounded-pill"
+            >Tamamlanmadı!</span
+          >
+          <div
+            *ngIf="
+              course.Score > 0 &&
+              course.UnansweredQuentions < course.TotalQuentions
+            "
+          >
+            Sınav Puanı
+            <span
+              *ngIf="course.IsSuccessfull && course.Score"
+              class="ms-2 badge bg-info rounded-pill"
+              >{{ course.Score }}
+            </span>
+            <span
+              *ngIf="!course.IsSuccessfull"
+              class="ms-2 badge bg-danger rounded-pill"
+              >{{ course.Score }}
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

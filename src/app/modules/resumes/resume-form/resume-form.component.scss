@@ -1,0 +1,67 @@
+.card-body {
+  min-height: 75vh;
+}
+.btnContainer {
+  position: sticky;
+  width: 100%;
+  bottom: 5vh;
+}
+.nav-tabs {
+  background-color: var(--bs-white);
+}
+.btnCol {
+  position: absolute;
+  right: -260px;
+  bottom: 160px;
+  width: 240px;
+  height: 160px;
+  background: #ffffff;
+  border-radius: 0px 15px 15px 0px;
+}
+.customButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+  margin: 5px 10px;
+  gap: 8px;
+  width: 220px;
+  height: 45px;
+  color: #fff;
+  border-radius: 5px;
+}
+.btnGrey {
+  background: #6d6d6d;
+  border-color: #6d6d6d;
+}
+.btnOrenge {
+  background: #c46a17;
+  border-color: #c46a17;
+}
+.btnGreen {
+  background: #0fbc00;
+  border-color: #0fbc00;
+}
+@media (max-width: 1750px) {
+  .btnCol {
+    right: -180px;
+  }
+}
+@media (max-width: 1500px) {
+  .btnCol {
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    height: 60px;
+    right: 0;
+  }
+  .customButton {
+    float: left;
+    width: calc(33.33% - 20px) !important;
+  }
+}
+
+.unClick {
+  cursor: no-drop;
+}

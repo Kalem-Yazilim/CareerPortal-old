@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+<div class="container container-md container-xl" >
+  <div class="card login" >
+    <div class="card-body" >
+      <div class="card-title text-center mb-4">
+        <img
+          src="assets/img/casperLogo.svg"
+          style="height: 32px; transform: translate(0px, 6px)"
+          alt="Casper Logo"
+        />
+      </div>
+      <form [formGroup]="form" (ngSubmit)="submit()"  >
+        <formly-form
+          [model]="model"
+          [fields]="fields"
+          [options]="options"
+          [form]="form"
+        ></formly-form>
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            class="submit-button btn btn-primary btn-lg btn-block"
+            [disabled]="!form.valid || loading"
+          >
+            Kayıt Ol
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

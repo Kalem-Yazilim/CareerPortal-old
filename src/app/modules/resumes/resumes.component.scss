@@ -1,0 +1,23 @@
+.add-new {
+  .card-body {
+    opacity: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .card-body:hover {
+    opacity: 100%;
+  }
+
+  transition: box-shadow 0.3s;
+}
+
+.add-new:hover {
+  box-shadow: 0px 0px 5px gray;
+}
+
+.row {
+  .col {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row pt-3 d-flex">
+    <div
+      class="col-12 my-2 col-md-6 col-lg-4 col-xl-3"
+      *ngFor="let category of categories"
+    >
+      <div class="card" style="width: 100%">
+        <img
+          [src]="category.ImageData"
+          class="card-img-top cursor-pointer"
+          alt="..."
+          height="220px"
+          width="298px"
+          [routerLink]="'/training/' + category.Oid"
+        />
+        <div class="card-body" style="overflow: auto">
+          <h5 class="card-title text-center">{{ category.Name }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

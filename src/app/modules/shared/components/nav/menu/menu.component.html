@@ -1,0 +1,7 @@
+<li *ngFor="let item of menuItems">
+    <a [routerLink]="item.link" [skipLocationChange]="env.prod" class="nav-link menu-item"
+        [routerLinkActive]="'menu-item-active'" [routerLinkActiveOptions]="{exact: (item.link == '')}">
+        <i class="bi bi-{{item.icon}} menu-icon"></i>
+        {{item.title}}
+    </a>
+</li>

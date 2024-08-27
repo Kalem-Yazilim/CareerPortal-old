@@ -1,0 +1,76 @@
+<ng-template #newFile>
+  <app-new-file [oid]="oid" (isEntityAdded)="refresh($event)" [updateModel]="updateEntity"></app-new-file>
+</ng-template>
+
+<!-- <app-grid
+  #grid
+  [requestConfig]="requestConfig"
+  (entity)="openModal(newFile, $event)"
+  (actionLink)="onClickDownloadFile($event)"
+></app-grid> -->
+
+<div class="container-fluid container-xl">
+  <div class="row table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" *ngFor="let column of requestConfig.columns">
+            {{ column.header }}
+          </th>
+          <th>-</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of data">
+          <!-- <td>{{item['File']['FileName']}}</td> -->
+          <td>
+            <a
+              style="
+                color: var(--bs-link-color);
+                text-decoration: underline;
+                cursor: pointer;
+              "
+              (click)="onClickDownloadFile(item)"
+              >{{ item["File"]["FileName"] }}</a
+            >
+          </td>
+          <!-- <td >
+            <span *ngIf="!requestConfig.columns[i]?.link">
+              {{ getPropertyValue(item, requestConfig.columns[i].binding) }}
+            </span>
+            <span *ngIf="requestConfig.columns[i]?.link">
+              <a
+                style="
+                  color: var(--bs-link-color);
+                  text-decoration: underline;
+                  cursor: pointer;
+                "
+                (click)="onClickDownloadFile(getPropertyValue(item, 'Oid'))"
+              >
+                {{ getPropertyValue(item, requestConfig.columns[i].binding) }}
+              </a>
+            </span>
+          </td> -->
+          <td>
+            <button
+              class="btn btn-info text-light mx-1"
+              (click)="openModal(newFile,item)"
+            >
+              <i class="bi-pencil"></i>
+            </button>
+            <button class="btn btn-danger mx-1" (click)="delete(item.Oid)">
+              <i class="bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-primary me-3" (click)="openModal(newFile)">
+    Ekle
+  </button>
+</div>

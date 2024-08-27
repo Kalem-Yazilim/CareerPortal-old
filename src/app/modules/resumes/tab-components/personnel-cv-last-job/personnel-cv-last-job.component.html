@@ -1,0 +1,23 @@
+<ng-template #newLastJob>
+  <app-new-last-job
+    [oid]="oid"
+    (isEntityAdded)="refresh($event)"
+    [updateModel]="updateEntity"
+  ></app-new-last-job>
+</ng-template>
+
+<app-grid
+  #grid
+  [requestConfig]="requestConfig"
+  (entity)="openModal(newLastJob, $event)"
+></app-grid>
+
+<div class="d-flex justify-content-end">
+  <button
+    type="button"
+    class="btn btn-primary me-3"
+    (click)="openModal(newLastJob)"
+  >
+    Ekle
+  </button>
+</div>
